@@ -7,6 +7,9 @@ public class BouncyBall : MonoBehaviour
     public float minY = -5.5f;
     public float maxVelocity = 15f;
     Rigidbody2D rb;
+
+    int score = 0;
+    int live = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +23,7 @@ public class BouncyBall : MonoBehaviour
         {
             transform.position = Vector3.zero;
             rb.velocity = Vector3.zero;
+            live--;
         }
         if(rb.velocity.magnitude > maxVelocity)
         {
@@ -31,6 +35,7 @@ public class BouncyBall : MonoBehaviour
         if (collision.gameObject.CompareTag("Brick"))
         {
             Destroy(collision.gameObject);
+            score += 10;
         }
     }
 }
